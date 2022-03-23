@@ -54,6 +54,9 @@
     border-bottom: 1px solid #d1d1d1;
     font-family: Roboto,Helvetica,Arial,sans-serif;
 }
+.card__body__input:focus{
+    border-bottom: 2px solid #339933;
+}
 ::placeholder {
     color: #d1d1d1;
     opacity: 1;
@@ -103,3 +106,15 @@
     border-bottom-right-radius: 15px; 
     background-color: #339933 !important;
 }
+
+.card__footer__btn--blue:focus{
+    background: #004880 !important;
+    border-color: #6c96b6 #002d51 #001e36 #366f9b;
+    text-shadow: 2px 2px 2px #00223d;
+}
+.card__footer__btn--green:focus{
+    background: #2a6e05 !important;
+    border-color: #84ab6f #1b4503 #122e02 #578d3a;
+    text-shadow: 2px 2px 2px #133202;
+}
+
