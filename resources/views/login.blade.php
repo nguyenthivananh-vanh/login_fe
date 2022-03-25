@@ -3,7 +3,8 @@
     <div class="wrapper">
         <div class="login__bg mainWrap container-fluid"> 
             <div class="form__login container">
-                <form action="">
+                <form action= "{{route('loginApi')}}"  method="POST" enctype="multipart/form-data">
+                    @csrf
                     <div class="form__login__card">
                         <div class="card__header">
                             <div class="row">                          
@@ -13,14 +14,20 @@
                                 </div>
                             </div>
                         </div>
+                        @if (isset($error))
+                            <div class="alert alert-error" style="color: #b30000;">
+                                {{ $error }}<br>
+                            </div>
+                        @endif
+                        
                         <div class="card__body">
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <input type="text" class="card__body__input" id="" placeholder="Tên đăng nhập" >                                      
+                                        <input type="text" class="card__body__input" id="" name="name" placeholder="Tên đăng nhập" >                                      
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" class="card__body__input" id="" placeholder="Mật khẩu">
+                                        <input type="password" class="card__body__input" id="" name="password" placeholder="Mật khẩu">
                                     </div>
                                     <div class="form-group d-flex align-items-center" >
                                         <input type="checkbox" class="" id="" >
@@ -39,7 +46,7 @@
                                     <button class="card__footer__btn--blue"> <i class="fa-solid fa-chart-line" style="width: 20px;"></i> Quản lý</button>
                                 </div>
                                 <div class="col-6" style="padding: 0">
-                                    <button class="card__footer__btn--green"> <i class="fas fa-shopping-basket"></i> Bán hàng </button>
+                                    <button type="submit" class="card__footer__btn--green"> <i class="fas fa-shopping-basket"></i> Bán hàng </button>
                                 </div>
                             </div>                          
                         </div>                                           

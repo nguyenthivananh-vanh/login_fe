@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('login');
-});
+// Route::get('/', function () {
+//     return view('login');
+// });
+Route::get('login', 'App\Http\Controllers\LoginController@login');
+Route::post('loginApi', 'App\Http\Controllers\LoginController@loginApi')->name('loginApi');
