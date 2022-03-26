@@ -12,17 +12,22 @@ class LoginController extends Controller
        return view('login');
     }
     public function loginApi(Request $request){
-        $conn = new \GuzzleHttp\Client;
-        $name = $request->name;
+        // $conn = new \GuzzleHttp\Client;
+        $username = $request->username;
         $password = $request->password;
-        $response = $conn->post('http://127.0.0.1:8888/api/login?',[
-            'headers'=>[
-                'Authorization'=>'Bearer'.session()->get('token.access')
-            ],
-            'query'=>[
-                'name'=>$name,
-                'password'=>$password
-            ]
+        // $response = $conn->post('http://192.168.1.172/login_be/public/api/login?',[
+        //     'headers'=>[
+        //         'Authorization'=>'Bearer'.session()->get('token.access')
+        //     ],
+        //     'query'=>[
+        //         'username'=>$username,
+        //         'password'=>$password
+        //     ]
+        // ]);
+        // dd($username, $password);
+        $response = Http::post('http://192.168.1.172/login_be/public/api/login', [
+            'username'=> $username,
+            'password'=> $password
         ]);
         $result = json_decode((string)$response->getBody(),true);
         // dd($result['status']);

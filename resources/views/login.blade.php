@@ -24,7 +24,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <input type="text" class="card__body__input" id="" name="name" placeholder="Tên đăng nhập" >                                      
+                                        <input type="text" class="card__body__input" id="" name="username" placeholder="Tên đăng nhập" >                                      
                                     </div>
                                     <div class="form-group">
                                         <input type="password" class="card__body__input" id="" name="password" placeholder="Mật khẩu">
