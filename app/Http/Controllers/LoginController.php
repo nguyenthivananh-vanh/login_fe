@@ -34,7 +34,9 @@ class LoginController extends Controller
         if($result['status'] == 'error'){
             return view('login',['error'=>$result['message']]);
         }else{
-            return view('home',['result'=>$result['message']]);
+            $response = Http::get('http://192.168.1.172/login_be/public/api/account/list');       
+             $data = json_decode(json_encode($response['data']), FALSE);
+            return view('Account.list',['users'=> $data]);
         }
        
         

@@ -6,13 +6,13 @@
             <div class="header__pc">
                 <div class="row title">
                     <div class="col-2">
-                        <h5 class="card-title">Account</h5>
+                        <h5 class="card-title">Danh sách tài khoản</h5>
                     </div>
                     <div class="col-3"></div>
                     <div class="col-7">
                         <div class="row task" style="border-bottom: none">
                             <div class="text-right">
-                                <button class="btn-add"><a href=""> <i
+                                <button class="btn-add"><a href="{{ route('account-add')}}"> <i
                                             class="fas fa-plus"></i>Thêm</a></button>
                             </div>
                         </div>
@@ -30,7 +30,7 @@
                         <form action="" method="POST" enctype="multipart/form-data"
                             style="width:95%">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                            <input class="form-control" type="text" placeholder="Search.." name="search">
+                            <input class="form-control" type="text" placeholder="Tìm kiếm" name="search">
 
                         </form>
                     </div>
@@ -84,19 +84,35 @@
                         <thead>
                             <tr style="text-align:center">
                                 <th>ID</th>
-                                <th>Username</th>
+                                <th>Tên tài khoản</th>
                                 <th>Email</th>
                                 <th>Tác vụ</th>
                             </tr>
                         </thead>
                         <tbody>
-                            
+                            @foreach($users as $item)
+                                <tr>
+                                    <td>
+                                        {{$item->id}}
+                                    </td>
+                                    <td>
+                                        {{$item->username}}
+                                    </td>
+                                    <td>
+                                        {{$item->email}}
+                                    </td>
+                                    <td style="text-align: center">
+                                        <a href=""><i class="far fa-edit"></i></a>
+                                        <a href=""> <i class="fas fa-trash-alt"></i></a>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
-      
+
     </div>
 </section>
 @endsection

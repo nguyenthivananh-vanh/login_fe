@@ -19,3 +19,8 @@ Route::get('home', function () {
 Route::get('login', 'App\Http\Controllers\LoginController@login');
 Route::post('loginApi', 'App\Http\Controllers\LoginController@loginApi')->name('loginApi');
 Route::get('list', 'App\Http\Controllers\AccountController@index');
+
+Route::group(['prefix' => '/account'], function (){  
+    Route::get('/add', 'App\Http\Controllers\AccountController@create')->name('account-add');
+    Route::post('/add', 'App\Http\Controllers\AccountController@postAccount')->name('post-account');
+});
