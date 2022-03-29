@@ -12,8 +12,8 @@
                     <div class="col-7">
                         <div class="row task" style="border-bottom: none">
                             <div class="text-right">
-                                <button class="btn-add"><a href="{{ route('account-add')}}"> <i
-                                            class="fas fa-plus"></i>Thêm</a></button>
+                                <a href="{{ route('account-add')}}"> <button class="btn-add"><i
+                                            class="fas fa-plus"></i>Thêm</button></a>
                             </div>
                         </div>
                     </div>
@@ -102,7 +102,7 @@
                                         {{$item->email}}
                                     </td>
                                     <td style="text-align: center">
-                                        <a href=""><i class="far fa-edit"></i></a>
+                                        <a href="account/update/{{$item->id}}"><i class="far fa-edit"></i></a>
                                         <a href=""> <i class="fas fa-trash-alt"></i></a>
                                     </td>
                                 </tr>

@@ -15,16 +15,7 @@ class LoginController extends Controller
         // $conn = new \GuzzleHttp\Client;
         $username = $request->username;
         $password = $request->password;
-        // $response = $conn->post('http://192.168.1.172/login_be/public/api/login?',[
-        //     'headers'=>[
-        //         'Authorization'=>'Bearer'.session()->get('token.access')
-        //     ],
-        //     'query'=>[
-        //         'username'=>$username,
-        //         'password'=>$password
-        //     ]
-        // ]);
-        // dd($username, $password);
+
         $response = Http::post('http://192.168.1.172/login_be/public/api/login', [
             'username'=> $username,
             'password'=> $password
@@ -34,11 +25,11 @@ class LoginController extends Controller
         if($result['status'] == 'error'){
             return view('login',['error'=>$result['message']]);
         }else{
-            $response = Http::get('http://192.168.1.172/login_be/public/api/account/list');       
+            $response = Http::get('http://192.168.1.172/login_be/public/api/account/list');
              $data = json_decode(json_encode($response['data']), FALSE);
             return view('Account.list',['users'=> $data]);
         }
-       
-        
+
+
     }
 }
