@@ -29,7 +29,7 @@ Route::group(['prefix' => '/account'], function () {
 Route::group(['prefix' => '/location'], function () {
     Route::get('city', 'App\Http\Controllers\LocationController@index');
     Route::get('/district', 'App\Http\Controllers\LocationController@getListDistrict');
-    Route::get('update/{id}', 'App\Http\Controllers\AccountController@create')->name('account-update');
+    Route::get('/ward', 'App\Http\Controllers\LocationController@getListWard');
 });
 
 
