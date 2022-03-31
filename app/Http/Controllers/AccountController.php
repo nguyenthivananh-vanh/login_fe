@@ -11,7 +11,8 @@ class AccountController extends Controller
     public function index(){
         $response = Http::get('http://192.168.1.172/login_be/public/api/list');
         $data = $response['data'];
-        return view('Account.list',['users',$data]);
+        dd($data);
+//        return view('Account.list',['users',$data]);
     }
 
     public function create(Request  $request){

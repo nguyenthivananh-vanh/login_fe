@@ -37,7 +37,7 @@
         if(!districtList[cityId]){
             $.ajax({
                 type:'get',
-                url:'/location/district?id='+cityId,
+                url:'/login_fe/public/location/district?id='+cityId,
                 data: cityId,
             }).done(function(res){
                 districtList[cityId] = res;
@@ -54,7 +54,7 @@
         if(!wardList[districtId]){
             $.ajax({
                 type:'get',
-                url:'/location/ward?city_id='+cityId+'&district_id='+districtId,
+                url:'/login_fe/public/location/ward?city_id='+cityId+'&district_id='+districtId,
                 data: cityId + districtId,
 
             }).done(function(res){
@@ -73,6 +73,9 @@
                 ${districts.map(district => {
                     return `<option value="${district.id}"> ${district.local_district_name}</option> `
                 }).reduce((a,b) => a+b)}`)
+            $('select[name="ward"]').html(`
+                <option selected disabled>Xã/ Phường</option>`)
+
         }else{
             $('select[name="district"]').html(`
                 <option selected disabled>Quận/huyện</option>`)

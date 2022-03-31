@@ -114,5 +114,9 @@
         </div>
 
     </div>
+    <div class="container">
+
+    {{ $users->links() }}
+    </div>
 </section>
 @endsection

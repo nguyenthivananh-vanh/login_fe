@@ -12,7 +12,6 @@ class LoginController extends Controller
        return view('login');
     }
     public function loginApi(Request $request){
-        // $conn = new \GuzzleHttp\Client;
         $username = $request->username;
         $password = $request->password;
 
@@ -27,6 +26,10 @@ class LoginController extends Controller
         }else{
             $response = Http::get('http://192.168.1.172/login_be/public/api/account/list');
              $data = json_decode(json_encode($response['data']), FALSE);
+             $test = json_encode($data->data);
+
+             dd(json_decode(json_encode($data->data)));
+             dd( json_decode(json_encode((object)$data->data)));
             return view('Account.list',['users'=> $data]);
         }
 
