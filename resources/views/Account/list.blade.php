@@ -36,42 +36,7 @@
                     </div>
                 </div>
             </div>
-            <!-- <div class="header__mobile">
-                <div class="row title">
-                    <div class="col-lg-1 col-md-1 col-sm-1 header__mobile-navbar">
-                        <label for="header__mobile-input" class="header__mobile--btn" onclick="checkbar()">
-                            <i class="fas fa-bars"></i>
-                        </label>
-                    </div>
-                    <div class="col-lg-1 col-md-1  col-sm-2 header__mobile-navbar">
-                        <span class="header__home"><a href=""><i
-                                    class="fas fa-home"></i></a></span>
-                    </div>
 
-                    <div class="col-lg-7 col-md-6  col-sm-4 header__mobile-empty"></div>
-                    <div class="col-lg-3 col-md-4  col-sm-5 header__mobile-search">
-                        <div class="search-container">
-                            <form action="" method="POST"
-                                enctype="multipart/form-data">
-                                <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                                <input style="border: 1px solid #ddd; border-radius: 3px;padding-left: 10px" type="text"
-                                    placeholder="Search.." name="search" id="search">
-                            </form>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="row task">
-                    <div class="col-lg-2 col-md-2  col-sm-3 header__mobile-5">
-                        <h5 class="card-title">Users</h5>
-                    </div>
-                    <div class="col-lg-7 col-md-6  col-sm-4 no-empty"></div>
-                    <div class="col-lg-3 col-md-4  col-sm-5  task-button header__mobile-5">
-                        <button class="btn-add"><a href=""> <i
-                                    class="fas fa-plus"></i>Thêm</a></button>
-                    </div>
-                </div>
-            </div> -->
 
             <!-- @if (session('thongbao'))
                 <div class="alert alert-success">
@@ -114,9 +79,48 @@
         </div>
 
     </div>
+{{--    phân trang--}}
     <div class="container">
-
-    {{ $users->links() }}
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                <li class="page-item d-flex">
+{{--                    @dump($current_page)--}}
+                    @if ($current_page > 1 && $total_page > 1)
+                        <a class="page-link" href="/login_fe/public/list?current_page={{$current_page-1}}&limit={{$limit}}" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                    @endif
+                    @for ($i = 1; $i <= $total_page; $i++)
+                        @if ($i == $current_page)
+                            <span>{{$i}}</span>
+                        @else
+                            <a class="page-link" href="/login_fe/public/list?current_page={{$i}}&limit={{$limit}}">{{$i}}</a>
+                        @endif
+                    @endfor
+                    @if ($current_page < $total_page && $total_page > 1)
+                        <a class="page-link" href="/login_fe/public/list?current_page={{$current_page +1}}&limit={{$limit}}" aria-label="Previous">
+{{--                            <span aria-hidden="true">&laquo;</span>--}}
+                            <span aria-hidden="true">&raquo;</span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    @endif
+                </li>
+            </ul>
+        </nav>
     </div>
 </section>
+<script>
+    function check(current_page, limit){
+        console.log(current_page);
+        $.ajax({
+            type:'get',
+            url:'/login_fe/public/list?current_page='+current_page+'&limit='+limit,
+            data: current_page + limit,
+
+        }).done(function(res){
+            // location.reload();location.reload();
+        });
+    }
+</script>
 @endsection
